@@ -1,0 +1,45 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Transmitters</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Rfc</th>
+      <th>Name</th>
+      <th>Street</th>
+      <th>Number</th>
+      <th>Neighborhood</th>
+      <th>Zc</th>
+      <th>City</th>
+      <th>State</th>
+      <th>Country</th>
+      <th>Phone</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @transmitters.each do |transmitter| %>
+      <tr>
+        <td><%= transmitter.rfc %></td>
+        <td><%= transmitter.name %></td>
+        <td><%= transmitter.street %></td>
+        <td><%= transmitter.number %></td>
+        <td><%= transmitter.neighborhood %></td>
+        <td><%= transmitter.zc %></td>
+        <td><%= transmitter.city %></td>
+        <td><%= transmitter.state %></td>
+        <td><%= transmitter.country %></td>
+        <td><%= transmitter.phone %></td>
+        <td><%= link_to 'Show', transmitter %></td>
+        <td><%= link_to 'Edit', edit_transmitter_path(transmitter) %></td>
+        <td><%= link_to 'Destroy', transmitter, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Transmitter', new_transmitter_path %>

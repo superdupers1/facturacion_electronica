@@ -1,0 +1,44 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Cantidad:</strong>
+  <%= @file_description.cantidad %>
+</p>
+
+<p>
+  <strong>Unit:</strong>
+  <%= @file_description.unit %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @file_description.description %>
+</p>
+
+<p>
+  <strong>Code:</strong>
+  <%= @file_description.code %>
+</p>
+
+<p>
+  <strong>Price:</strong>
+  <%= @file_description.price %>
+</p>
+
+<p>
+  <strong>Amount:</strong>
+  <%= @file_description.amount %>
+</p>
+
+<p>
+  <strong>Document:</strong>
+  <%= @file_description.document %>
+</p>
+
+<p>
+  <strong>Product:</strong>
+  <%= @file_description.product %>
+</p>
+
+<%= link_to 'Edit', edit_file_description_path(@file_description) %> |
+<%= link_to 'Back', file_descriptions_path %>
