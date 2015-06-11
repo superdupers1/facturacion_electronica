@@ -1,5 +1,6 @@
 WickedPdf.config = {
   #:wkhtmltopdf => '/usr/local/bin/wkhtmltopdf',
-  #:layout => "pdf.html",
-  :exe_path => 'C:/Ruby21/lib/ruby/gems/2.1.o/gems/wkhtmltopdf-binary-0.9.9.3'
+  #x:layout => "pdf.html",
+  #:wkhtmltopdf => 'C:/Program Files/wkhtmltopdf/bin/wkhtmltopdf.exe'
+  exe_path: 'C:/Program Files/wkhtmltopdf/bin/wkhtmltopdf.exe'
 }

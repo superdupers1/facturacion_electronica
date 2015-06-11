@@ -1,1 +1,80 @@
-<h1>holoo</h1>
+<p>
+  <strong>Folio:</strong>
+  <%= @document.folio %>
+</p>
+
+<p>
+  <strong>Emisor:</strong>
+  <%= @document.transmitter.name %>
+  <%= @document.transmitter.rfc %>
+  <%= @document.transmitter.street %>
+  <%= @document.transmitter.neighborhood %>
+</p>
+
+<p>
+  <strong>Cliente:</strong>
+  <%= @document.customer.name %>
+  <%= @document.customer.rfc %>
+  <%= @document.customer.street %>
+  <%= @document.customer.neighborhood %>
+</p>
+
+
+<table>
+  <tr>
+    <th>Cantidad</th>
+    <th>Codigo</th>
+    <th>Unidades</th>
+    <th>Producto</th>
+    <th>P. Unitario</th>
+    <th>Importe</th>
+  </tr>
+
+  <% @document.FileDescription.each do |d| %>
+  <tr>
+    <td><%= d.cantidad %></td>
+    <td><%= d.unit %></td>
+    <td><%= d.description %></td>
+    <td><%= d.code %></td>
+    <td><%= d.price %></td>
+    <td><%= d.amount %></td>
+  </tr>
+  <% end %>
+
+</table>
+
+
+<br><br>
+
+
+
+
+<p>
+  <strong>Subtotal:</strong>
+  <%= @document.subtotal %>
+</p>
+
+<p>
+  <strong>Iva:</strong>
+  <%= @document.iva %>
+</p>
+
+<p>
+  <strong>Total:</strong>
+  <%= @document.total %>
+</p>
+
+<p>
+  <strong>Written amount:</strong>
+  <%= @document.written_amount %>
+</p>
+
+<p>
+  <strong>Payment method:</strong>
+  <%= @document.payment_method %>
+</p>
+
+<p>
+  <strong>Account payment:</strong>
+  <%= @document.account_payment %>
+</p>
