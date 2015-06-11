@@ -69,6 +69,6 @@ class TransmittersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def transmitter_params
-      params.require(:transmitter).permit(:rfc, :name, :street, :number, :neighborhood, :zc, :city, :state, :country, :phone)
+      params.require(:transmitter).permit(:rfc, :name, :street, :number, :neighborhood, :zc, :city, :state, :country, :phone, :document_type, :expedition_place, :tax_regime)
     end
 end

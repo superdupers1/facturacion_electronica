@@ -11,5 +11,7 @@ class Transmitter < ActiveRecord::Base
   validates :city, presence: true
   validates :state, presence: true
   validates :country, presence: true
-  validates :phone, presence: true
+  validates :document_type, presence: true
+  validates :expedition_place, presence: true
+  validates :tax_regime, presence: true
 end

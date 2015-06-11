@@ -10,5 +10,7 @@ class Document < ActiveRecord::Base
   validates :total, presence: true
   validates :written_amount, presence: true
   validates :payment_method, presence: true
-
+  validates :transmitter_id, presence: true
+  validates :payment_way, presence: true
+  validates :account_payment, presence: true, format:{with: /\A[0-9]{4}\z/, message: 'deben ser 4 numeros'}
 end

@@ -13,6 +13,9 @@ class DocumentsController < ApplicationController
     respond_to do |format|
       format.html
       format.xml
+      format.pdf do
+        render pdf: "file_name"   # Excluding ".pdf" extension.
+      end
     end
 
   end
@@ -82,7 +85,7 @@ class DocumentsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def document_params
-      params.require(:document).permit(:folio, :subtotal, :iva, :total, :written_amount, :payment_method, :account_payment, :customer_id, :transmitter_id)
+      params.require(:document).permit(:folio, :subtotal, :iva, :total, :written_amount, :payment_method, :account_payment, :customer_id, :transmitter_id, :payment_way)
     end
 
     def description_params (desc, id)

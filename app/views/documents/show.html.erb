@@ -1,5 +1,5 @@
 <%= link_to 'Edit', edit_document_path(@document) %> |
-<%= link_to 'Back', documents_path %>
+<%= link_to 'Back', documents_path %> |
 <%= link_to 'Xml', document_path(@document, format: :xml) %>
 
 <p id="notice"><%= notice %></p>
@@ -84,26 +84,3 @@
   <strong>Account payment:</strong>
   <%= @document.account_payment %>
 </p>
-
-
-
-
-
-<h1>emisor</h1><br>
-  <%=Gyoku.xml(:"cdfi:Emisor/" => "",
-  :attributes =>{
-    :"cdfi:Emisor/" =>{
-      rfc: @document.transmitter.rfc, nombre: @document.transmitter.name
-    }
-  })
-   %>
-
-<br>
-<h1>receptor</h1><br>
-<%=Gyoku.xml(:"cdfi:Receptor/" => "",
-:attributes =>{
-  :"cdfi:Receptor/" =>{
-    rfc: @document.customer.rfc, nombre: @document.customer.name
-  }
-})
- %>

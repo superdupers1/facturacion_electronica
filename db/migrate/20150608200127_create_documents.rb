@@ -7,7 +7,7 @@ class CreateDocuments < ActiveRecord::Migration
       t.decimal :total, precision: 15, scale: 2
       t.string :written_amount
       t.string :payment_method
-      t.integer :account_payment
+      t.string :account_payment
       t.references :customer, index: true, foreign_key: true
 
       t.timestamps null: false

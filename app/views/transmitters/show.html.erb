@@ -50,5 +50,18 @@
   <%= @transmitter.phone %>
 </p>
 
+<p>
+  <strong>tip documento:</strong>
+  <%= @transmitter.document_type %>
+</p>
+
+<p>
+  <strong>Lugar de expedicion:</strong>
+  <%= @transmitter.expedition_place %>
+</p>
+<p>
+  <strong>Regimen fiscal:</strong>
+  <%= @transmitter.tax_regime %>
+</p>
 <%= link_to 'Edit', edit_transmitter_path(@transmitter) %> |
 <%= link_to 'Back', transmitters_path %>

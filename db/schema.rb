@@ -35,10 +35,11 @@ ActiveRecord::Schema.define(version: 20150610195408) do
     t.decimal  "total",                       precision: 15, scale: 2
     t.string   "written_amount",  limit: 255
     t.string   "payment_method",  limit: 255
-    t.integer  "account_payment", limit: 4
+    t.string   "account_payment", limit: 255
     t.integer  "customer_id",     limit: 4
     t.datetime "created_at",                                           null: false
     t.datetime "updated_at",                                           null: false
+    t.string   "payment_way",     limit: 255
     t.integer  "transmitter_id",  limit: 4
   end
 
@@ -71,18 +72,21 @@ ActiveRecord::Schema.define(version: 20150610195408) do
   end
 
   create_table "transmitters", force: :cascade do |t|
-    t.string   "rfc",          limit: 255
-    t.string   "name",         limit: 255
-    t.string   "street",       limit: 255
-    t.string   "number",       limit: 255
-    t.string   "neighborhood", limit: 255
-    t.integer  "zc",           limit: 4
-    t.string   "city",         limit: 255
-    t.string   "state",        limit: 255
-    t.string   "country",      limit: 255
-    t.string   "phone",        limit: 255
-    t.datetime "created_at",               null: false
-    t.datetime "updated_at",               null: false
+    t.string   "rfc",              limit: 255
+    t.string   "name",             limit: 255
+    t.string   "street",           limit: 255
+    t.string   "number",           limit: 255
+    t.string   "neighborhood",     limit: 255
+    t.integer  "zc",               limit: 4
+    t.string   "city",             limit: 255
+    t.string   "state",            limit: 255
+    t.string   "country",          limit: 255
+    t.string   "phone",            limit: 255
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
+    t.string   "document_type",    limit: 255
+    t.string   "expedition_place", limit: 255
+    t.string   "tax_regime",       limit: 255
   end
 
   add_foreign_key "documents", "customers"

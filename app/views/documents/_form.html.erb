@@ -67,17 +67,19 @@
       <%= f.label :total %> <%= f.text_field :total %>
     </div>
     <div class="field">
-      <%= f.label :written_amount %> <%= f.text_field :written_amount %>
+      <%= f.label :written_amount, "Cantidad con letra" %> <%= f.text_field :written_amount %>
     </div>
     <div class="field">
-      <%= f.label :payment_method %> <%= f.text_field :payment_method %>
+      <%= f.label :payment_method, "Metodo de pago" %> <%= f.text_field :payment_method, :value => "No identificado" %>
     </div>
     <div class="field">
-      <%= f.label :account_payment %> <%= f.number_field :account_payment %>
+      <%= f.label :account_payment, "Cuenta de pago" %> <%= f.text_field :account_payment, :value => "0000" %>
     </div>
-
+    <div class="field">
+      <%= f.label :payment_way, "Forma de pago" %> <%= f.text_field :payment_way, :value => "Pago en una sola exhibición" %>
+    </div>
     <div class="actions">
-      <%= f.submit %>
+      <%= f.submit 'crear factura' %>
     </div>
   <% end %>
 

@@ -6,14 +6,9 @@
   <thead>
     <tr>
       <th>Folio</th>
-      <th>Subtotal</th>
-      <th>Iva</th>
+      <th>Cliente</th>
       <th>Total</th>
-      <th>Written amount</th>
-      <th>Payment method</th>
-      <th>Account payment</th>
-      <th>Customer</th>
-      <th colspan="3"></th>
+      <th ></th>
     </tr>
   </thead>
 
@@ -21,14 +16,8 @@
     <% @documents.each do |document| %>
       <tr>
         <td><%= link_to document.folio, document %></td>
-        <td><%= document.folio %></td>
-        <td><%= document.subtotal %></td>
-        <td><%= document.iva %></td>
+        <td><%= document.customer.name %></td>
         <td><%= document.total %></td>
-        <td><%= document.written_amount %></td>
-        <td><%= document.payment_method %></td>
-        <td><%= document.account_payment %></td>
-        <td><%= document.customer ? document.customer.name : "" %></td>
         <td><%= link_to 'X', document, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
