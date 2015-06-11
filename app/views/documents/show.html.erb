@@ -1,6 +1,7 @@
 <%= link_to 'Edit', edit_document_path(@document) %> |
 <%= link_to 'Back', documents_path %> |
-<%= link_to 'Xml', document_path(@document, format: :xml) %>
+<%= link_to 'Xml', document_path(@document, format: :xml) %> |
+<%= link_to 'Pdf', document_path(@document, format: :pdf) %>
 
 <p id="notice"><%= notice %></p>
 
