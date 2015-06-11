@@ -11,39 +11,101 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :folio %><br>
-    <%= f.text_field :folio %>
+  <%= f.hidden_field :transmitter_id, :value => "1" %>
+
+  <div class="field col-sm-3">
+      <%= f.label :folio %><br>
+      <%= f.text_field :folio %>
+    </div>
+    <div class="field col-sm-6">
+      <%= f.label :customer_id %><br>
+      <%= collection_select(:document, :customer_id, Customer.all, :id, :name,{:prompt=>""}, {:class => 'selectpicker form-control',"data-live-search" => "true"}) %>
+
+    </div>
+
+
+
+
+  <br><br><br><br>
+
+
+  <table>
+    <tr>
+      <th>Cantidad</th>
+      <th>codigo</th>
+      <th>unidades</th>
+      <th>Producto</th>
+      <th>P. Unitario</th>
+      <th>Importe</th>
+    </tr>
+    <% (1..5).each do |i| %>
+
+    <tr>
+      <td><%= text_field_tag "descriptions[][cantidad]" %></td>
+      <td><%= text_field_tag "descriptions[][code]" %></td>
+      <td><%= text_field_tag "descriptions[][unit]" %></td>
+      <td><%#= collection_select("descriptions[#{i}][product]",:product_id, Product.all, :id, :description,{:prompt =>""}, {:class => 'selectpicker form-control',"row" => "#{i}"}) %>
+        <%= text_field_tag "descriptions[][description]" %>
+      </td>
+      <td><%= text_field_tag "descriptions[][price]" %></td>
+      <td><%= text_field_tag "descriptions[][amount]" %></td>
+    </tr>
+    <% end %>
+
+  </table>
+
+  <br><br>
+
+
+    <div class="field">
+      <%= f.label :subtotal %> <%= f.text_field :subtotal %>
+    </div>
+    <div class="field">
+      <%= f.label :iva %> <%= f.text_field :iva %>
+    </div>
+    <div class="field">
+      <%= f.label :total %> <%= f.text_field :total %>
+    </div>
+    <div class="field">
+      <%= f.label :written_amount %> <%= f.text_field :written_amount %>
+    </div>
+    <div class="field">
+      <%= f.label :payment_method %> <%= f.text_field :payment_method %>
+    </div>
+    <div class="field">
+      <%= f.label :account_payment %> <%= f.number_field :account_payment %>
+    </div>
+
+    <div class="actions">
+      <%= f.submit %>
+    </div>
+  <% end %>
+
+  <div id= "products_list">
+    contenido
   </div>
-  <div class="field">
-    <%= f.label :subtotal %><br>
-    <%= f.text_field :subtotal %>
-  </div>
-  <div class="field">
-    <%= f.label :iva %><br>
-    <%= f.text_field :iva %>
-  </div>
-  <div class="field">
-    <%= f.label :total %><br>
-    <%= f.text_field :total %>
-  </div>
-  <div class="field">
-    <%= f.label :written_amount %><br>
-    <%= f.text_field :written_amount %>
-  </div>
-  <div class="field">
-    <%= f.label :payment_method %><br>
-    <%= f.text_field :payment_method %>
-  </div>
-  <div class="field">
-    <%= f.label :account_payment %><br>
-    <%= f.number_field :account_payment %>
-  </div>
-  <div class="field">
-    <%= f.label :customer_id %><br>
-    <%= f.text_field :customer_id %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-<% end %>
+
+
+  <script type="text/javascript">
+    $('select').select2({
+      allowClear: true,
+      placeholder: "Selecionar",});
+
+      $("selectttt").change(function(){
+        var value = $(this).val();
+        var id = $(this).attr("row");
+        $.ajax({
+          url: "/products/"+value+".json",
+          type: 'GET',
+          data: value,
+          success: function(data){
+            //alert(id);
+            $("#descriptions_"+id+"_unit").val(data.unit)
+            $("#descriptions_"+id+"_code").val(data.code)
+            $("#descriptions_"+id+"_price").val(data.price)
+            $("#descriptions_"+id+"_amount").val(data.price*data.cantidad)
+
+          }
+        })
+      })
+  </script>

@@ -20,6 +20,7 @@
   <tbody>
     <% @documents.each do |document| %>
       <tr>
+        <td><%= link_to document.folio, document %></td>
         <td><%= document.folio %></td>
         <td><%= document.subtotal %></td>
         <td><%= document.iva %></td>
@@ -27,10 +28,8 @@
         <td><%= document.written_amount %></td>
         <td><%= document.payment_method %></td>
         <td><%= document.account_payment %></td>
-        <td><%= document.customer.name %></td>
-        <td><%= link_to 'Show', document %></td>
-        <td><%= link_to 'Edit', edit_document_path(document) %></td>
-        <td><%= link_to 'Destroy', document, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= document.customer ? document.customer.name : "" %></td>
+        <td><%= link_to 'X', document, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>

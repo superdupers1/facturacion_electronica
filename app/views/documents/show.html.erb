@@ -1,9 +1,59 @@
+<%= link_to 'Edit', edit_document_path(@document) %> |
+<%= link_to 'Back', documents_path %>
+<%= link_to 'Xml', document_path(@document, format: :xml) %>
+
 <p id="notice"><%= notice %></p>
 
 <p>
   <strong>Folio:</strong>
   <%= @document.folio %>
 </p>
+
+<p>
+  <strong>Emisor:</strong>
+  <%= @document.transmitter.name %>
+  <%= @document.transmitter.rfc %>
+  <%= @document.transmitter.street %>
+  <%= @document.transmitter.neighborhood %>
+</p>
+
+<p>
+  <strong>Cliente:</strong>
+  <%= @document.customer.name %>
+  <%= @document.customer.rfc %>
+  <%= @document.customer.street %>
+  <%= @document.customer.neighborhood %>
+</p>
+
+
+<table>
+  <tr>
+    <th>Cantidad</th>
+    <th>Codigo</th>
+    <th>Unidades</th>
+    <th>Producto</th>
+    <th>P. Unitario</th>
+    <th>Importe</th>
+  </tr>
+
+  <% @document.FileDescription.each do |d| %>
+  <tr>
+    <td><%= d.cantidad %></td>
+    <td><%= d.unit %></td>
+    <td><%= d.description %></td>
+    <td><%= d.code %></td>
+    <td><%= d.price %></td>
+    <td><%= d.amount %></td>
+  </tr>
+  <% end %>
+
+</table>
+
+
+<br><br>
+
+
+
 
 <p>
   <strong>Subtotal:</strong>
@@ -35,10 +85,25 @@
   <%= @document.account_payment %>
 </p>
 
-<p>
-  <strong>Customer:</strong>
-  <%= @document.customer %>
-</p>
 
-<%= link_to 'Edit', edit_document_path(@document) %> |
-<%= link_to 'Back', documents_path %>
+
+
+
+<h1>emisor</h1><br>
+  <%=Gyoku.xml(:"cdfi:Emisor/" => "",
+  :attributes =>{
+    :"cdfi:Emisor/" =>{
+      rfc: @document.transmitter.rfc, nombre: @document.transmitter.name
+    }
+  })
+   %>
+
+<br>
+<h1>receptor</h1><br>
+<%=Gyoku.xml(:"cdfi:Receptor/" => "",
+:attributes =>{
+  :"cdfi:Receptor/" =>{
+    rfc: @document.customer.rfc, nombre: @document.customer.name
+  }
+})
+ %>

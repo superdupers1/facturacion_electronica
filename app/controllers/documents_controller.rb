@@ -10,29 +10,14 @@ class DocumentsController < ApplicationController
   # GET /documents/1
   # GET /documents/1.json
   def show
-  end
-
-  def new_fact
-    @document = Document.new
-  end
-
-  def new_fact_save
-    @document = Document.new(document_params)
-
     respond_to do |format|
-      if @document.save
-        format.html { redirect_to @document, notice: 'Document was successfully created.' }
-        format.json { render :show, status: :created, location: @document }
-      else
-        format.html { render :new }
-        format.json { render json: @document.errors, status: :unprocessable_entity }
-      end
+      format.html
+      format.xml
     end
-    params[:descriptions].each do |desc|
-       @description= FileDescription.new(description_params(desc, @document.id))
-       @description.save
-    end
+
   end
+
+
 
   # GET /documents/new
   def new
@@ -50,6 +35,12 @@ class DocumentsController < ApplicationController
 
     respond_to do |format|
       if @document.save
+
+        params[:descriptions].each do |desc|
+           @description= FileDescription.new(description_params(desc, @document.id))
+           @description.save
+        end
+
         format.html { redirect_to @document, notice: 'Document was successfully created.' }
         format.json { render :show, status: :created, location: @document }
       else
@@ -91,7 +82,7 @@ class DocumentsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def document_params
-      params.require(:document).permit(:folio, :subtotal, :iva, :total, :written_amount, :payment_method, :account_payment, :customer_id)
+      params.require(:document).permit(:folio, :subtotal, :iva, :total, :written_amount, :payment_method, :account_payment, :customer_id, :transmitter_id)
     end
 
     def description_params (desc, id)

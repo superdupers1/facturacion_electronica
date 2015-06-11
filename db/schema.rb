@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150608232505) do
+ActiveRecord::Schema.define(version: 20150610195408) do
 
   create_table "customers", force: :cascade do |t|
     t.string   "rfc",          limit: 255
@@ -39,9 +39,11 @@ ActiveRecord::Schema.define(version: 20150608232505) do
     t.integer  "customer_id",     limit: 4
     t.datetime "created_at",                                           null: false
     t.datetime "updated_at",                                           null: false
+    t.integer  "transmitter_id",  limit: 4
   end
 
   add_index "documents", ["customer_id"], name: "index_documents_on_customer_id", using: :btree
+  add_index "documents", ["transmitter_id"], name: "index_documents_on_transmitter_id", using: :btree
 
   create_table "file_descriptions", force: :cascade do |t|
     t.integer  "cantidad",    limit: 4
@@ -84,6 +86,7 @@ ActiveRecord::Schema.define(version: 20150608232505) do
   end
 
   add_foreign_key "documents", "customers"
+  add_foreign_key "documents", "transmitters"
   add_foreign_key "file_descriptions", "documents"
   add_foreign_key "file_descriptions", "products"
 end

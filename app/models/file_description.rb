@@ -2,6 +2,7 @@ class FileDescription < ActiveRecord::Base
   belongs_to :document
   belongs_to :product
 
+
   validates :cantidad, presence: true
   validates :unit, presence: true
   validates :description, presence: true

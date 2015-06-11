@@ -1,10 +1,10 @@
 Rails.application.routes.draw do
+  root 'documents#new'
+
   resources :file_descriptions
   resources :transmitters
   resources :transmitters
-  get 'new_fact' => 'documents#new_fact'
-  post 'new_fact' => 'documents#new_fact_save'
-  resources :documents
+    resources :documents
 
   resources :products
 
